@@ -38,7 +38,7 @@
     "i18n"
   ],
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && cp ./never.mp4 ./public",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
