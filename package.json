@@ -50,6 +50,9 @@
   "devDependencies": {
     "prettier": "2.0.5"
   },
+  "bin": {
+    "ffprobe": "./ffprobe"
+  },
   "keywords": [
     "gatsby"
   ],
