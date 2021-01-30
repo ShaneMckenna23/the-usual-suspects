@@ -74,9 +74,9 @@ HeroArea.propTypes = {
 HeroArea.defaultProps = {
   headingStyle: {
     as: 'h1',
-    fontSize: ['70px', null, '90px', '80px', '100px', '100px'],
+    fontSize: ['70px', null, '90px', '90px', '110px', '120px'],
     textTransform: 'capitalize',
-    fontFamily: 'Passion One',
+    fontFamily: 'Slaztone',
     mb: ['10px', null, 0],
   },
   textStyle: {
