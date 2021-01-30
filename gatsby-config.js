@@ -3,31 +3,30 @@ module.exports = {
     title: `Fatima`,
     titleTemplate: `Creative React Gatsby Blog Template`,
     description: `Kick off your next, great blogging website with this Gatsby template. This template ships with the main Gatsby configuration files you might need.`,
-    keywords: ["bootstrap", "react", "gatsby", "graphql", "markdown"],
-    siteLanguage: "en",
+    keywords: ['bootstrap', 'react', 'gatsby', 'graphql', 'markdown'],
+    siteLanguage: 'en',
     author: `@gatsbyjs`,
-    image: "banner.jpg",
-    siteUrl: "http://localhost:8000/",
+    image: 'banner.jpg',
+    siteUrl: 'http://localhost:8000/',
     mailchimp_endpoint:
-      "https://gmail.us19.list-manage.com/subscribe/post?u=9fac302a213ab56195e9125e7&amp;id=a30904c5f3",
-    disqus_shortname: "thern-1",
-    getform_url: "https://getform.io/f/7a6695a7-c8e3-442c-bc2f-d46d3b9a535e",
+      'https://gmail.us19.list-manage.com/subscribe/post?u=9fac302a213ab56195e9125e7&amp;id=a30904c5f3',
+    disqus_shortname: 'thern-1',
+    getform_url: 'https://getform.io/f/7a6695a7-c8e3-442c-bc2f-d46d3b9a535e',
     contact: {
       social: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        instagram: "https://instagram.com",
-        linkedin: "https://linkedin.com",
-        youtube: "https://youtube.com",
+        facebook: 'https://facebook.com',
+        twitter: 'https://twitter.com',
+        instagram: 'https://instagram.com',
+        linkedin: 'https://linkedin.com',
+        youtube: 'https://youtube.com',
       },
     },
   },
   mapping: {
-    "MarkdownRemark.frontmatter.author": `AuthorsJson.name`,
+    'MarkdownRemark.frontmatter.author': `AuthorsJson.name`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-ffmpeg`,
     `gatsby-transformer-json`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
@@ -65,7 +64,7 @@ module.exports = {
       options: {
         // type: `hashtag`,
         // hashtag: `naturesbeauty`,
-        username: "10393110367",
+        username: '10393110367',
         // access_token: "EAAJfJNguJz4BAI3u9hxFCVJUwVgT39AzmO7nyRAPPEhHEiyyElx7cYSxbv5hHWMyopFM00R0wh7wfoghe7vfePBteFp9pKKkDJKdAPl0b1fKTkWu2s9nYhiYrxHnq28n3mZC4HUSYwxJeaurinARaOqxOzaVfwlBJZBEMApAZDZD",
         // instagram_id: "rainbowit5"
       },
@@ -81,55 +80,87 @@ module.exports = {
         display: `standalone`,
         icons: [
           {
-            src: "/icons/icon-72x72.png",
-            sizes: "72x72",
-            type: "image/png",
+            src: '/icons/icon-72x72.png',
+            sizes: '72x72',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-96x96.png",
-            sizes: "96x96",
-            type: "image/png",
+            src: '/icons/icon-96x96.png',
+            sizes: '96x96',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-128x128.png",
-            sizes: "128x128",
-            type: "image/png",
+            src: '/icons/icon-128x128.png',
+            sizes: '128x128',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-144x144.png",
-            sizes: "144x144",
-            type: "image/png",
+            src: '/icons/icon-144x144.png',
+            sizes: '144x144',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-152x152.png",
-            sizes: "152x152",
-            type: "image/png",
+            src: '/icons/icon-152x152.png',
+            sizes: '152x152',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
+            src: '/icons/icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-384x384.png",
-            sizes: "384x384",
-            type: "image/png",
+            src: '/icons/icon-384x384.png',
+            sizes: '384x384',
+            type: 'image/png',
           },
           {
-            src: "/icons/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
+            src: '/icons/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
           },
         ],
       },
     },
     {
-      resolve: "gatsby-plugin-robots-txt",
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: "http://localhost:8000/",
-        sitemap: "http://localhost:8000/sitemap.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
+        host: 'http://localhost:8000/',
+        sitemap: 'http://localhost:8000/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-video`,
+      options: {
+        profiles: {
+          sepia: {
+            extension: `mp4`,
+            converter: function ({ ffmpegSession, videoStreamMetadata }) {
+              const { currentFps } = videoStreamMetadata;
+
+              const outputOptions = [
+                `-crf 31`,
+                `-preset slow`,
+                `-movflags +faststart`,
+                `-profile:v high`,
+                `-bf 2	`,
+                `-g ${Math.floor(currentFps / 2)}`,
+                `-coder 1`,
+                `-pix_fmt yuv420p`,
+              ].filter(Boolean);
+
+              return ffmpegSession
+                .videoCodec(`libx264`)
+                .videoFilters(
+                  `colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131`
+                )
+                .outputOptions(outputOptions)
+                .noAudio();
+            },
+          },
+        },
       },
     },
   ],
-}
+};

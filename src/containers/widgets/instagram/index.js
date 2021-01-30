@@ -1,8 +1,8 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Image from '../../../components/image';
-import WidgetBox, { WidgetTitle } from '../../../components/shared/widget-box';
-import { InstagramWrap, InstagramItem } from './instagram.stc';
+// import { useStaticQuery, graphql } from 'gatsby';
+// import Image from '../../../components/image';
+// import WidgetBox, { WidgetTitle } from '../../../components/shared/widget-box';
+// import { InstagramWrap, InstagramItem } from './instagram.stc';
 
 const Instagram = ({ widgetStyle }) => {
   return <div>INSTA</div>;
@@ -26,37 +26,37 @@ const Instagram = ({ widgetStyle }) => {
   //       }
   //     }
   //   `)
-  const photos = instagramData.allInstaNode.edges;
-  return (
-    <WidgetBox {...widgetStyle}>
-      <WidgetTitle>Instagram</WidgetTitle>
-      <InstagramWrap>
-        {photos &&
-          photos.map((photo, i) => (
-            <InstagramItem key={`instagram-${i}`}>
-              {photo &&
-                photo.node &&
-                photo.node.localFile &&
-                photo.node.localFile.childImageSharp && (
-                  <Image
-                    fluid={photo.node.localFile.childImageSharp.fluid}
-                    alt="Instagram"
-                  />
-                )}
-              {photo.node.preview && (
-                <a
-                  href={photo.node.preview}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Preview Link
-                </a>
-              )}
-            </InstagramItem>
-          ))}
-      </InstagramWrap>
-    </WidgetBox>
-  );
+  // const photos = instagramData.allInstaNode.edges;
+  // return (
+  //   <WidgetBox {...widgetStyle}>
+  //     <WidgetTitle>Instagram</WidgetTitle>
+  //     <InstagramWrap>
+  //       {photos &&
+  //         photos.map((photo, i) => (
+  //           <InstagramItem key={`instagram-${i}`}>
+  //             {photo &&
+  //               photo.node &&
+  //               photo.node.localFile &&
+  //               photo.node.localFile.childImageSharp && (
+  //                 <Image
+  //                   fluid={photo.node.localFile.childImageSharp.fluid}
+  //                   alt="Instagram"
+  //                 />
+  //               )}
+  //             {photo.node.preview && (
+  //               <a
+  //                 href={photo.node.preview}
+  //                 target="_blank"
+  //                 rel="noopener noreferrer"
+  //               >
+  //                 Preview Link
+  //               </a>
+  //             )}
+  //           </InstagramItem>
+  //         ))}
+  //     </InstagramWrap>
+  //   </WidgetBox>
+  // );
 };
 
 Instagram.defaultProps = {
