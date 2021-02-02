@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 function SEO({
   description,
   lang,
@@ -26,15 +26,17 @@ function SEO({
         }
       }
     `
-  )
-  const metaDescription = description || site.siteMetadata.description
-  const language = lang || site.siteMetadata.siteLanguage
-  const keys = keywords || site.siteMetadata.keywords
+  );
+  const metaDescription = description || site.siteMetadata.description;
+  const language = lang || site.siteMetadata.siteLanguage;
+  const keys = keywords || site.siteMetadata.keywords;
   const image =
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}/${metaImage.src}`
-      : null
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}/${pathname}` : null
+      : null;
+  const canonical = pathname
+    ? `${site.siteMetadata.siteUrl}/${pathname}`
+    : null;
   return (
     <Helmet
       htmlAttributes={{
@@ -46,7 +48,7 @@ function SEO({
         canonical
           ? [
               {
-                rel: "canonical",
+                rel: 'canonical',
                 href: canonical,
               },
             ]
@@ -58,8 +60,8 @@ function SEO({
           content: metaDescription,
         },
         {
-          name: "keywords",
-          content: keys.join(","),
+          name: 'keywords',
+          content: keys.join(','),
         },
         {
           property: `og:title`,
@@ -90,26 +92,26 @@ function SEO({
           metaImage
             ? [
                 {
-                  property: "og:image",
+                  property: 'og:image',
                   content: image,
                 },
                 {
-                  property: "og:image:width",
+                  property: 'og:image:width',
                   content: metaImage.width,
                 },
                 {
-                  property: "og:image:height",
+                  property: 'og:image:height',
                   content: metaImage.height,
                 },
                 {
-                  name: "twitter:card",
-                  content: "summary_large_image",
+                  name: 'twitter:card',
+                  content: 'summary_large_image',
                 },
               ]
             : [
                 {
-                  name: "twitter:card",
-                  content: "summary",
+                  name: 'twitter:card',
+                  content: 'summary',
                 },
               ]
         )
@@ -120,14 +122,15 @@ function SEO({
         href="https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap"
         rel="stylesheet"
       />
+      <script src="https://gumroad.com/js/gumroad.js"></script>
     </Helmet>
-  )
+  );
 }
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
@@ -139,5 +142,5 @@ SEO.propTypes = {
     width: PropTypes.number.isRequired,
   }),
   pathname: PropTypes.string,
-}
-export default SEO
+};
+export default SEO;
