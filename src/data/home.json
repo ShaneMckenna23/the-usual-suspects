@@ -2,8 +2,7 @@
   {
     "id": "home-hero-content",
     "title": "The Usual Suspects",
-    "desc": "Leave your email here and stay informed about our promotions and new arrivals.",
-    "image": "./images/banner/test.jpg"
+    "desc": "Leave your email here and stay informed about our promotions and new arrivals."
   },
   {
     "id": "home-mailchimp-content",

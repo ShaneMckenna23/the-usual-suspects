@@ -11,13 +11,6 @@ const HeroArea = (props) => {
       homeJson(id: { eq: "home-hero-content" }) {
         title
         desc
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1920, maxHeight: 1080, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
       }
       file(relativePath: { eq: "video/Seamless_Loop_11.mp4" }) {
         id

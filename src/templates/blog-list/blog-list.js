@@ -1,24 +1,24 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Container, Row, Col } from "reactstrap"
-import { graphql } from "gatsby"
-import SEO from "../../components/seo"
-import Layout from "../../containers/layout/layout"
-import Header from "../../containers/layout/header"
-import Footer from "../../containers/layout/footer"
-import HeroArea from "../../containers/home/hero-area"
-import FeaurePostArea from "../../containers/home/feature-post-area"
-import ContactArea from "../../containers/home/contact-area"
-import Siderbar from "../../containers/global/sidebar"
-import SectionTitle from "../../components/shared/section-title"
-import Blog from "../../components/blog/layout-two"
-import Pagination from "../../components/pagination"
-import { MainWrapper, RecenPostWrap, RecentPostContent } from "./blog-list.stc"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Container, Row, Col } from 'reactstrap';
+import { graphql } from 'gatsby';
+import SEO from '../../components/seo';
+import Layout from '../../containers/layout/layout';
+import Header from '../../containers/layout/header';
+import Footer from '../../containers/layout/footer';
+import HeroArea from '../../containers/home/hero-area';
+import FeaurePostArea from '../../containers/home/feature-post-area';
+import ContactArea from '../../containers/home/contact-area';
+import Siderbar from '../../containers/global/sidebar';
+import SectionTitle from '../../components/shared/section-title';
+import Blog from '../../components/blog/layout-two';
+import Pagination from '../../components/pagination';
+import { MainWrapper, RecenPostWrap, RecentPostContent } from './blog-list.stc';
 
 const BlogList = ({ data, pageContext, location, ...restProps }) => {
-  const { sectionTitleStyle, blogStyle } = restProps
-  const blogs = data.allMarkdownRemark.edges
-  const { currentPage, numberOfPages } = pageContext
+  const { sectionTitleStyle, blogStyle } = restProps;
+  const blogs = data.allMarkdownRemark.edges;
+  const { currentPage, numberOfPages } = pageContext;
   return (
     <Layout>
       <SEO title={`Blog Page: ${currentPage}`} />
@@ -36,7 +36,7 @@ const BlogList = ({ data, pageContext, location, ...restProps }) => {
                     title="Most Recent Post"
                   />
                   <RecentPostContent>
-                    {blogs.map(blog => (
+                    {blogs.map((blog) => (
                       <Blog
                         {...blogStyle}
                         key={blog.node.fields.slug}
@@ -65,13 +65,14 @@ const BlogList = ({ data, pageContext, location, ...restProps }) => {
       </div>
       <Footer />
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query BlogListQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/(/blog)/" } }
       limit: $limit
       skip: $skip
     ) {
@@ -126,20 +127,20 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 BlogList.propTypes = {
   sectionTitleStyle: PropTypes.object,
   blogStyle: PropTypes.object,
-}
+};
 
 BlogList.defaultProps = {
   sectionTitleStyle: {
-    mb: "46px",
+    mb: '46px',
   },
   blogStyle: {
-    mb: "50px",
+    mb: '50px',
   },
-}
+};
 
-export default BlogList
+export default BlogList;

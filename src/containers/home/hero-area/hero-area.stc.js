@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import BackgroundImage from "gatsby-background-image"
-import BannerShape from "../../../assets/resources/img/home-one-banner-shape.png"
-import { device } from "../../../theme"
+import styled from 'styled-components';
+import BackgroundImage from 'gatsby-background-image';
+import BannerShape from '../../../assets/resources/img/home-one-banner-shape.png';
+import { device } from '../../../theme';
 
 export const HeroWrapper = styled.section`
   height: 500px;
@@ -20,7 +20,7 @@ export const HeroWrapper = styled.section`
   }
   &:before {
     position: absolute;
-    content: "";
+    content: '';
     left: 0;
     top: 0;
     width: 100%;
@@ -30,7 +30,7 @@ export const HeroWrapper = styled.section`
   }
   &:after {
     position: absolute;
-    content: "";
+    content: '';
     left: 0;
     bottom: -5px;
     z-index: 1;
@@ -52,7 +52,7 @@ export const HeroWrapper = styled.section`
       height: 280px;
     }
   }
-`
+`;
 //styled(BackgroundImage)
 export const HeroBG = styled.video`
   position: absolute !important;
@@ -60,7 +60,8 @@ export const HeroBG = styled.video`
   top: 0;
   width: 100%;
   height: 100%;
-`
+  object-fit: cover;
+`;
 
 export const HeroTextBox = styled.div`
   padding-top: 110px;
@@ -77,4 +78,4 @@ export const HeroTextBox = styled.div`
     position: relative;
     z-index: 9;
   }
-`
+`;

@@ -1,11 +1,11 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Anchor from "../shared/anchor"
-import DarkLogo from "../../assets/resources/img/logo.png"
-import WhiteLogo from "../../assets/resources/img/white-logo.png"
-import { LogoWrap } from "./logo.stc"
+import React from 'react';
+import PropTypes from 'prop-types';
+import Anchor from '../shared/anchor';
+import DarkLogo from '../../assets/resources/img/logo.png';
+import WhiteLogo from '../../assets/resources/img/white-logo.png';
+import { LogoWrap } from './logo.stc';
 
-const Logo = props => {
+const Logo = (props) => {
   return (
     <LogoWrap {...props}>
       <Anchor path="/">
@@ -13,11 +13,11 @@ const Logo = props => {
         <img src={WhiteLogo} alt="Logo" className="white-logo" />
       </Anchor>
     </LogoWrap>
-  )
-}
+  );
+};
 
 Logo.propTypes = {
   transparentBG: PropTypes.bool,
-}
+};
 
-export default Logo
+export default Logo;
